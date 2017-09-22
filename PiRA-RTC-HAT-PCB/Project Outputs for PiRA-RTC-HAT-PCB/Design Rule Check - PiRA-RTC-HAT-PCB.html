@@ -1,0 +1,666 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD16\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">09/22/2017</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">10:59:01 AM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc" class="file"><acronym title="C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc">C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">110</td></tr>
+</table>
+</td>
+</table><a name="IDJY2EWB4YKI5HLE42SWYZ05UA3C234USGQKFB5QFMXQF3D53J5IEB"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID202N0QTMHQHWNY0S4JTFFFFTSIIJRGTC1AHOB1HZPSQMOIJ1YBEO">Clearance Constraint (Gap=0.152mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXD15URIVMLUPLUH4OORCZP00UGOKU5H4VD0MCIOFM4WA3GLWFAFL">Width Constraint (Min=0.152mm) (Max=2mm) (Preferred=0.203mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNWLMBMGMNCROJR4PLPOKH0CBEMWBHJKLLNTGG1CQHZVMM0XQTNQK">Matched Lengths(Tolerance=0.254mm) (InDifferentialPairClass('CAMERA_DIFF'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZLDV1L41SIDZGRTJCC4BCL555HOWUQKQYJXTHXEE12UJ5PZ52DHO">Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=2) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKHHEQTGQOS05LF5F2RHZRVBXZDBPZ1I5DRQTB2OX4EWPKXTYA2DF">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDNQ4DN1FNT02YPMAICRRYKCY2VC1B5K4LZX1MAZL1220AOIGB00L">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDL4P1AHOWCVDVBSY00ZILXZZZJKBUALO2CVZB5KPXA3EYBP4BXY0M">Hole Size Constraint (Min=0.3mm) (Max=5mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZRYV1CWEIYVQOVTRWMPKJSSDRIUNB5TIZKDDIRNTFP2UWVWYO4OP">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDTXKECBBPXHRGC3ZM4NYO5YJOKNGLPT0V44CPNRHPA1TBGKW2Y52M">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEVM5LD2MN45LP2AAY10XY0KSLFYV4BH4EP44TFH0I4ACBP3XGJEG">Minimum Solder Mask Sliver (Gap=0.05mm) (All),(All)</a></td>
+<td class="column2">35</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLN144YBY4AMDIVWAEDXUXTDJHJGXJUH5H2MQWEOJ4SHDG5XFT4PI">Silk To Solder Mask (Clearance=0mm) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4S1W5IMDSQ55MG035QCLWKJE0CM3YJSHSPJX4OHXZTFN2HKKZQ4N">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">75</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAIKB2ASBTHRQMMCEA2PQOQKGKEQXLH2ETHGSMUM3ED0BSHICGNCB">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4JGIM40PTBMPNXWGHZNXJQVJ1MLBEECWHBTD12FWJXPWJECYJ13K">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">110</td>
+</tr>
+</table><br><a name="IDEVM5LD2MN45LP2AAY10XY0KSLFYV4BH4EP44TFH0I4ACBP3XGJEG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.05mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4235.044mil|Location2.X=4238.263mil|Location1.Y=3344.828mil|Location2.Y=3348.046mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4235.044mil|Location2.X=4238.263mil|Location1.Y=3344.828mil|Location2.Y=3348.046mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U2-14(38.4mm,14.15mm) on Top Layer And Pad U2-15(38.9mm,14.15mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4215.359mil|Location2.X=4218.578mil|Location1.Y=3344.828mil|Location2.Y=3348.046mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4215.359mil|Location2.X=4218.578mil|Location1.Y=3344.828mil|Location2.Y=3348.046mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U2-13(37.9mm,14.15mm) on Top Layer And Pad U2-14(38.4mm,14.15mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4195.674mil|Location2.X=4198.893mil|Location1.Y=3344.828mil|Location2.Y=3348.046mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4195.674mil|Location2.X=4198.893mil|Location1.Y=3344.828mil|Location2.Y=3348.046mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U2-12(37.4mm,14.15mm) on Top Layer And Pad U2-13(37.9mm,14.15mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4160.733mil|Location2.X=4163.952mil|Location1.Y=3388.627mil|Location2.Y=3391.845mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4160.733mil|Location2.X=4163.952mil|Location1.Y=3388.627mil|Location2.Y=3391.845mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U2-10(37.55mm,15.75mm) on Top Layer And Pad U2-11(37.375mm,15.25mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4160.733mil|Location2.X=4163.952mil|Location1.Y=3408.312mil|Location2.Y=3411.53mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4160.733mil|Location2.X=4163.952mil|Location1.Y=3408.312mil|Location2.Y=3411.53mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U2-9(37.375mm,16.25mm) on Top Layer And Pad U2-10(37.55mm,15.75mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4195.674mil|Location2.X=4198.893mil|Location1.Y=3470.812mil|Location2.Y=3474.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4195.674mil|Location2.X=4198.893mil|Location1.Y=3470.812mil|Location2.Y=3474.03mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U2-7(37.9mm,17.35mm) on Top Layer And Pad U2-8(37.4mm,17.35mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4215.359mil|Location2.X=4218.578mil|Location1.Y=3470.812mil|Location2.Y=3474.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4215.359mil|Location2.X=4218.578mil|Location1.Y=3470.812mil|Location2.Y=3474.03mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U2-6(38.4mm,17.35mm) on Top Layer And Pad U2-7(37.9mm,17.35mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4235.044mil|Location2.X=4238.263mil|Location1.Y=3470.812mil|Location2.Y=3474.03mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4235.044mil|Location2.X=4238.263mil|Location1.Y=3470.812mil|Location2.Y=3474.03mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U2-5(38.9mm,17.35mm) on Top Layer And Pad U2-6(38.4mm,17.35mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4251.284mil|Location2.X=4254.503mil|Location1.Y=3418.155mil|Location2.Y=3421.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4251.284mil|Location2.X=4254.503mil|Location1.Y=3418.155mil|Location2.Y=3421.373mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U2-3(39.3mm,16mm) on Top Layer And Pad U2-4(39.3mm,16.5mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4251.284mil|Location2.X=4254.503mil|Location1.Y=3398.47mil|Location2.Y=3401.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4251.284mil|Location2.X=4254.503mil|Location1.Y=3398.47mil|Location2.Y=3401.688mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U2-2(39.3mm,15.5mm) on Top Layer And Pad U2-3(39.3mm,16mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4251.284mil|Location2.X=4254.503mil|Location1.Y=3378.784mil|Location2.Y=3382.003mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4251.284mil|Location2.X=4254.503mil|Location1.Y=3378.784mil|Location2.Y=3382.003mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U2-1(39.3mm,15mm) on Top Layer And Pad U2-2(39.3mm,15.5mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4947.761mil|Location2.X=4950.979mil|Location1.Y=3324.808mil|Location2.Y=3328.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4947.761mil|Location2.X=4950.979mil|Location1.Y=3324.808mil|Location2.Y=3328.026mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-23(56.503mm,14.204mm) on Top Layer And Pad U1-24(57.003mm,14.204mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4964.493mil|Location2.X=4971.206mil|Location1.Y=3354.362mil|Location2.Y=3360.507mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4964.493mil|Location2.X=4971.206mil|Location1.Y=3354.362mil|Location2.Y=3360.507mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.042mm &lt; 0.05mm) Between Pad U1-1(57.678mm,14.879mm) on Top Layer And Pad U1-24(57.003mm,14.204mm) on Top Layer [Top Solder] Mask Sliver [0.042mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4928.076mil|Location2.X=4931.294mil|Location1.Y=3324.808mil|Location2.Y=3328.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4928.076mil|Location2.X=4931.294mil|Location1.Y=3324.808mil|Location2.Y=3328.026mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-22(56.003mm,14.204mm) on Top Layer And Pad U1-23(56.503mm,14.204mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4908.391mil|Location2.X=4911.609mil|Location1.Y=3324.808mil|Location2.Y=3328.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4908.391mil|Location2.X=4911.609mil|Location1.Y=3324.808mil|Location2.Y=3328.026mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-21(55.503mm,14.204mm) on Top Layer And Pad U1-22(56.003mm,14.204mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4888.706mil|Location2.X=4891.924mil|Location1.Y=3324.808mil|Location2.Y=3328.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4888.706mil|Location2.X=4891.924mil|Location1.Y=3324.808mil|Location2.Y=3328.026mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-20(55.003mm,14.204mm) on Top Layer And Pad U1-21(55.503mm,14.204mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4869.021mil|Location2.X=4872.239mil|Location1.Y=3324.808mil|Location2.Y=3328.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4869.021mil|Location2.X=4872.239mil|Location1.Y=3324.808mil|Location2.Y=3328.026mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-19(54.503mm,14.204mm) on Top Layer And Pad U1-20(55.003mm,14.204mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4852.288mil|Location2.X=4857.658mil|Location1.Y=3357.288mil|Location2.Y=3362.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4852.288mil|Location2.X=4857.658mil|Location1.Y=3357.288mil|Location2.Y=3362.976mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.042mm &lt; 0.05mm) Between Pad U1-18(53.828mm,14.879mm) on Top Layer And Pad U1-19(54.503mm,14.204mm) on Top Layer [Top Solder] Mask Sliver [0.042mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4819.808mil|Location2.X=4823.026mil|Location1.Y=3374.021mil|Location2.Y=3377.239mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4819.808mil|Location2.X=4823.026mil|Location1.Y=3374.021mil|Location2.Y=3377.239mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-17(53.828mm,15.379mm) on Top Layer And Pad U1-18(53.828mm,14.879mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4819.808mil|Location2.X=4823.026mil|Location1.Y=3393.706mil|Location2.Y=3396.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4819.808mil|Location2.X=4823.026mil|Location1.Y=3393.706mil|Location2.Y=3396.924mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-16(53.828mm,15.879mm) on Top Layer And Pad U1-17(53.828mm,15.379mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4819.808mil|Location2.X=4823.026mil|Location1.Y=3413.391mil|Location2.Y=3416.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4819.808mil|Location2.X=4823.026mil|Location1.Y=3413.391mil|Location2.Y=3416.609mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-15(53.828mm,16.379mm) on Top Layer And Pad U1-16(53.828mm,15.879mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4819.808mil|Location2.X=4823.026mil|Location1.Y=3433.076mil|Location2.Y=3436.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4819.808mil|Location2.X=4823.026mil|Location1.Y=3433.076mil|Location2.Y=3436.294mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-14(53.828mm,16.879mm) on Top Layer And Pad U1-15(53.828mm,16.379mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4819.808mil|Location2.X=4823.026mil|Location1.Y=3452.761mil|Location2.Y=3455.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4819.808mil|Location2.X=4823.026mil|Location1.Y=3452.761mil|Location2.Y=3455.979mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-13(53.828mm,17.379mm) on Top Layer And Pad U1-14(53.828mm,16.879mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4852.288mil|Location2.X=4859.001mil|Location1.Y=3466.567mil|Location2.Y=3472.711mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4852.288mil|Location2.X=4859.001mil|Location1.Y=3466.567mil|Location2.Y=3472.711mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.042mm &lt; 0.05mm) Between Pad U1-12(54.503mm,18.054mm) on Top Layer And Pad U1-13(53.828mm,17.379mm) on Top Layer [Top Solder] Mask Sliver [0.042mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4869.021mil|Location2.X=4872.239mil|Location1.Y=3476.383mil|Location2.Y=3479.601mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4869.021mil|Location2.X=4872.239mil|Location1.Y=3476.383mil|Location2.Y=3479.601mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-11(55.003mm,18.054mm) on Top Layer And Pad U1-12(54.503mm,18.054mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4888.706mil|Location2.X=4891.924mil|Location1.Y=3476.383mil|Location2.Y=3479.601mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4888.706mil|Location2.X=4891.924mil|Location1.Y=3476.383mil|Location2.Y=3479.601mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-10(55.503mm,18.054mm) on Top Layer And Pad U1-11(55.003mm,18.054mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4908.391mil|Location2.X=4911.609mil|Location1.Y=3476.383mil|Location2.Y=3479.601mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4908.391mil|Location2.X=4911.609mil|Location1.Y=3476.383mil|Location2.Y=3479.601mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-9(56.003mm,18.054mm) on Top Layer And Pad U1-10(55.503mm,18.054mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4928.076mil|Location2.X=4931.294mil|Location1.Y=3476.383mil|Location2.Y=3479.601mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4928.076mil|Location2.X=4931.294mil|Location1.Y=3476.383mil|Location2.Y=3479.601mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-8(56.503mm,18.054mm) on Top Layer And Pad U1-9(56.003mm,18.054mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4947.761mil|Location2.X=4950.979mil|Location1.Y=3476.383mil|Location2.Y=3479.601mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4947.761mil|Location2.X=4950.979mil|Location1.Y=3476.383mil|Location2.Y=3479.601mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-7(57.003mm,18.054mm) on Top Layer And Pad U1-8(56.503mm,18.054mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4964.493mil|Location2.X=4969.863mil|Location1.Y=3469.493mil|Location2.Y=3475.181mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4964.493mil|Location2.X=4969.863mil|Location1.Y=3469.493mil|Location2.Y=3475.181mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.042mm &lt; 0.05mm) Between Pad U1-6(57.678mm,17.379mm) on Top Layer And Pad U1-7(57.003mm,18.054mm) on Top Layer [Top Solder] Mask Sliver [0.042mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4971.383mil|Location2.X=4974.601mil|Location1.Y=3452.761mil|Location2.Y=3455.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4971.383mil|Location2.X=4974.601mil|Location1.Y=3452.761mil|Location2.Y=3455.979mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-5(57.678mm,16.879mm) on Top Layer And Pad U1-6(57.678mm,17.379mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4971.383mil|Location2.X=4974.601mil|Location1.Y=3433.076mil|Location2.Y=3436.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4971.383mil|Location2.X=4974.601mil|Location1.Y=3433.076mil|Location2.Y=3436.294mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-4(57.678mm,16.379mm) on Top Layer And Pad U1-5(57.678mm,16.879mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4971.383mil|Location2.X=4974.601mil|Location1.Y=3413.391mil|Location2.Y=3416.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4971.383mil|Location2.X=4974.601mil|Location1.Y=3413.391mil|Location2.Y=3416.609mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-3(57.678mm,15.879mm) on Top Layer And Pad U1-4(57.678mm,16.379mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4971.383mil|Location2.X=4974.601mil|Location1.Y=3393.706mil|Location2.Y=3396.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4971.383mil|Location2.X=4974.601mil|Location1.Y=3393.706mil|Location2.Y=3396.924mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-2(57.678mm,15.379mm) on Top Layer And Pad U1-3(57.678mm,15.879mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4971.383mil|Location2.X=4974.601mil|Location1.Y=3374.021mil|Location2.Y=3377.239mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4971.383mil|Location2.X=4974.601mil|Location1.Y=3374.021mil|Location2.Y=3377.239mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.05mm) Between Pad U1-1(57.678mm,14.879mm) on Top Layer And Pad U1-2(57.678mm,15.379mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID4S1W5IMDSQ55MG035QCLWKJE0CM3YJSHSPJX4OHXZTFN2HKKZQ4N"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2899.591mil|Location2.X=2910.841mil|Location1.Y=3142.485mil|Location2.Y=3153.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2899.591mil|Location2.X=2910.841mil|Location1.Y=3142.485mil|Location2.Y=3153.735mil|Absolute=True">Silk To Silk Clearance Constraint: (0.247mm &lt; 0.254mm) Between Text "3V3" (3.8mm,11.2mm) on Top Overlay And Arc (5.205mm,9.35mm) on Top Overlay Silk Text to Silk Clearance [0.247mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3663.84mil|Location2.X=3675.09mil|Location1.Y=3550.7mil|Location2.Y=3561.95mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3663.84mil|Location2.X=3675.09mil|Location1.Y=3550.7mil|Location2.Y=3561.95mil|Absolute=True">Silk To Silk Clearance Constraint: (0.084mm &lt; 0.254mm) Between Text "U4" (25.193mm,19.185mm) on Top Overlay And Track (24.102mm,19.239mm)(24.102mm,22.16mm) on Top Overlay Silk Text to Silk Clearance [0.084mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3707.407mil|Location2.X=3718.657mil|Location1.Y=3534.957mil|Location2.Y=3546.207mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3707.407mil|Location2.X=3718.657mil|Location1.Y=3534.957mil|Location2.Y=3546.207mil|Absolute=True">Silk To Silk Clearance Constraint: (0.097mm &lt; 0.254mm) Between Text "U4" (25.193mm,19.185mm) on Top Overlay And Track (25.499mm,19.239mm)(25.499mm,22.16mm) on Top Overlay Silk Text to Silk Clearance [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3714.137mil|Location2.X=3725.387mil|Location1.Y=3523.352mil|Location2.Y=3534.602mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3714.137mil|Location2.X=3725.387mil|Location1.Y=3523.352mil|Location2.Y=3534.602mil|Absolute=True">Silk To Silk Clearance Constraint: (0.233mm &lt; 0.254mm) Between Text "C13" (24.6mm,18mm) on Top Overlay And Track (25.499mm,19.239mm)(25.499mm,22.16mm) on Top Overlay Silk Text to Silk Clearance [0.233mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3669.933mil|Location2.X=3677.599mil|Location1.Y=3533.627mil|Location2.Y=3541.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3669.933mil|Location2.X=3677.599mil|Location1.Y=3533.627mil|Location2.Y=3541.294mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "U4" (25.193mm,19.185mm) on Top Overlay And Track (24.102mm,19.239mm)(25.499mm,19.239mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3683.127mil|Location2.X=3694.377mil|Location1.Y=3523.341mil|Location2.Y=3534.591mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3683.127mil|Location2.X=3694.377mil|Location1.Y=3523.341mil|Location2.Y=3534.591mil|Absolute=True">Silk To Silk Clearance Constraint: (0.232mm &lt; 0.254mm) Between Text "C13" (24.6mm,18mm) on Top Overlay And Track (24.102mm,19.239mm)(25.499mm,19.239mm) on Top Overlay Silk Text to Silk Clearance [0.232mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3660.975mil|Location2.X=3672.225mil|Location1.Y=3531.35mil|Location2.Y=3544.103mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3660.975mil|Location2.X=3672.225mil|Location1.Y=3531.35mil|Location2.Y=3544.103mil|Absolute=True">Silk To Silk Clearance Constraint: (0.244mm &lt; 0.254mm) Between Text "U4" (25.193mm,19.185mm) on Top Overlay And Track (22.438mm,19.303mm)(23.962mm,19.303mm) on Top Overlay Silk Text to Silk Clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3592.761mil|Location2.X=3604.011mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3592.761mil|Location2.X=3604.011mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "R23" (20.5mm,18.1mm) on Top Overlay And Track (22.438mm,19.303mm)(23.962mm,19.303mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3592.761mil|Location2.X=3604.011mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3592.761mil|Location2.X=3604.011mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "R23" (20.5mm,18.1mm) on Top Overlay And Track (22.438mm,19.303mm)(22.438mm,22.097mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3661.094mil|Location2.X=3672.344mil|Location1.Y=3550.7mil|Location2.Y=3561.95mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3661.094mil|Location2.X=3672.344mil|Location1.Y=3550.7mil|Location2.Y=3561.95mil|Absolute=True">Silk To Silk Clearance Constraint: (0.223mm &lt; 0.254mm) Between Text "U4" (25.193mm,19.185mm) on Top Overlay And Track (23.962mm,19.303mm)(23.962mm,22.097mm) on Top Overlay Silk Text to Silk Clearance [0.223mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3602.166mil|Location2.X=3613.416mil|Location1.Y=3017.603mil|Location2.Y=3028.853mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3602.166mil|Location2.X=3613.416mil|Location1.Y=3017.603mil|Location2.Y=3028.853mil|Absolute=True">Silk To Silk Clearance Constraint: (0.03mm &lt; 0.254mm) Between Text "R11" (22.8mm,6mm) on Top Overlay And Track (21.038mm,6.178mm)(22.562mm,6.178mm) on Top Overlay Silk Text to Silk Clearance [0.03mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3602.171mil|Location2.X=3613.421mil|Location1.Y=3007.034mil|Location2.Y=3020.729mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3602.171mil|Location2.X=3613.421mil|Location1.Y=3007.034mil|Location2.Y=3020.729mil|Absolute=True">Silk To Silk Clearance Constraint: (0.049mm &lt; 0.254mm) Between Text "R11" (22.8mm,6mm) on Top Overlay And Track (21.038mm,5.924mm)(22.562mm,5.924mm) on Top Overlay Silk Text to Silk Clearance [0.049mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3602.166mil|Location2.X=3613.416mil|Location1.Y=3010.595mil|Location2.Y=3021.845mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3602.166mil|Location2.X=3613.416mil|Location1.Y=3010.595mil|Location2.Y=3021.845mil|Absolute=True">Silk To Silk Clearance Constraint: (0.03mm &lt; 0.254mm) Between Text "R11" (22.8mm,6mm) on Top Overlay And Track (22.562mm,2.876mm)(22.562mm,6.178mm) on Top Overlay Silk Text to Silk Clearance [0.03mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3585.832mil|Location2.X=3597.082mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3585.832mil|Location2.X=3597.082mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "R23" (20.5mm,18.1mm) on Top Overlay And Track (22.262mm,19.303mm)(22.262mm,22.097mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3584.681mil|Location2.X=3595.931mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3584.681mil|Location2.X=3595.931mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "R23" (20.5mm,18.1mm) on Top Overlay And Track (20.738mm,19.303mm)(22.262mm,19.303mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3525.832mil|Location2.X=3537.082mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3525.832mil|Location2.X=3537.082mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "R23" (20.5mm,18.1mm) on Top Overlay And Track (20.738mm,19.303mm)(20.738mm,22.097mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3518.903mil|Location2.X=3530.153mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3518.903mil|Location2.X=3530.153mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "R23" (20.5mm,18.1mm) on Top Overlay And Track (20.562mm,19.303mm)(20.562mm,22.097mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3516.462mil|Location2.X=3527.712mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3516.462mil|Location2.X=3527.712mil|Location1.Y=3526.56mil|Location2.Y=3537.81mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "R23" (20.5mm,18.1mm) on Top Overlay And Track (19.038mm,19.303mm)(20.562mm,19.303mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3628.003mil|Location2.X=3639.253mil|Location1.Y=3003.484mil|Location2.Y=3014.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3628.003mil|Location2.X=3639.253mil|Location1.Y=3003.484mil|Location2.Y=3014.734mil|Absolute=True">Silk To Silk Clearance Constraint: (0.145mm &lt; 0.254mm) Between Text "R11" (22.8mm,6mm) on Top Overlay And Track (22.738mm,5.647mm)(24.262mm,5.647mm) on Top Overlay Silk Text to Silk Clearance [0.145mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.688mil|Location2.X=3675.938mil|Location1.Y=3003.484mil|Location2.Y=3014.734mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.688mil|Location2.X=3675.938mil|Location1.Y=3003.484mil|Location2.Y=3014.734mil|Absolute=True">Silk To Silk Clearance Constraint: (0.145mm &lt; 0.254mm) Between Text "R11" (22.8mm,6mm) on Top Overlay And Track (24.262mm,2.853mm)(24.262mm,5.647mm) on Top Overlay Silk Text to Silk Clearance [0.145mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3606.276mil|Location2.X=3620.257mil|Location1.Y=3003.424mil|Location2.Y=3014.674mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3606.276mil|Location2.X=3620.257mil|Location1.Y=3003.424mil|Location2.Y=3014.674mil|Absolute=True">Silk To Silk Clearance Constraint: (0.152mm &lt; 0.254mm) Between Text "R11" (22.8mm,6mm) on Top Overlay And Track (22.738mm,2.853mm)(22.738mm,5.647mm) on Top Overlay Silk Text to Silk Clearance [0.152mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3912.784mil|Location2.X=3924.034mil|Location1.Y=2876.121mil|Location2.Y=2887.371mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3912.784mil|Location2.X=3924.034mil|Location1.Y=2876.121mil|Location2.Y=2887.371mil|Absolute=True">Silk To Silk Clearance Constraint: (0.219mm &lt; 0.254mm) Between Text "+" (30.3mm,1.7mm) on Top Overlay And Track (26.59mm,2.794mm)(31.67mm,2.794mm) on Top Overlay Silk Text to Silk Clearance [0.219mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3747.39mil|Location2.X=3758.64mil|Location1.Y=2914.787mil|Location2.Y=2926.037mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3747.39mil|Location2.X=3758.64mil|Location1.Y=2914.787mil|Location2.Y=2926.037mil|Absolute=True">Silk To Silk Clearance Constraint: (0.249mm &lt; 0.254mm) Between Text "P7" (24.8mm,2.9mm) on Top Overlay And Track (26.59mm,2.794mm)(26.59mm,5.334mm) on Top Overlay Silk Text to Silk Clearance [0.249mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3292.037mil|Location2.X=3303.287mil|Location1.Y=2992.126mil|Location2.Y=3003.376mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3292.037mil|Location2.X=3303.287mil|Location1.Y=2992.126mil|Location2.Y=3003.376mil|Absolute=True">Silk To Silk Clearance Constraint: (0.122mm &lt; 0.254mm) Between Text "P8" (13.6mm,5.7mm) on Top Overlay And Track (7.15mm,5.37mm)(17.31mm,5.37mm) on Top Overlay Silk Text to Silk Clearance [0.122mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3518.253mil|Location2.X=3525.92mil|Location1.Y=3486.797mil|Location2.Y=3494.463mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3518.253mil|Location2.X=3525.92mil|Location1.Y=3486.797mil|Location2.Y=3494.463mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "R23" (20.5mm,18.1mm) on Top Overlay And Track (19.75mm,17.95mm)(20.85mm,17.95mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4989.375mil|Location2.X=5000.625mil|Location1.Y=3711.599mil|Location2.Y=3722.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4989.375mil|Location2.X=5000.625mil|Location1.Y=3711.599mil|Location2.Y=3722.849mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "R7" (56.9mm,22.8mm) on Top Overlay And Track (57.912mm,24.003mm)(57.912mm,29.083mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4549.268mil|Location2.X=4560.518mil|Location1.Y=3711.599mil|Location2.Y=3722.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4549.268mil|Location2.X=4560.518mil|Location1.Y=3711.599mil|Location2.Y=3722.849mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "C5" (46.6mm,22.8mm) on Top Overlay And Track (7.112mm,24.003mm)(57.912mm,24.003mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4643.757mil|Location2.X=4655.007mil|Location1.Y=3711.599mil|Location2.Y=3722.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4643.757mil|Location2.X=4655.007mil|Location1.Y=3711.599mil|Location2.Y=3722.849mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "C4" (49mm,22.8mm) on Top Overlay And Track (7.112mm,24.003mm)(57.912mm,24.003mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4949.533mil|Location2.X=4960.783mil|Location1.Y=3711.599mil|Location2.Y=3722.849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4949.533mil|Location2.X=4960.783mil|Location1.Y=3711.599mil|Location2.Y=3722.849mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "R7" (56.9mm,22.8mm) on Top Overlay And Track (7.112mm,24.003mm)(57.912mm,24.003mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4870.792mil|Location2.X=4882.042mil|Location1.Y=3713.568mil|Location2.Y=3724.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4870.792mil|Location2.X=4882.042mil|Location1.Y=3713.568mil|Location2.Y=3724.818mil|Absolute=True">Silk To Silk Clearance Constraint: (0.095mm &lt; 0.254mm) Between Text "R6" (54.9mm,22.9mm) on Top Overlay And Track (7.112mm,24.003mm)(57.912mm,24.003mm) on Top Overlay Silk Text to Silk Clearance [0.095mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4760.556mil|Location2.X=4771.806mil|Location1.Y=3713.568mil|Location2.Y=3724.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4760.556mil|Location2.X=4771.806mil|Location1.Y=3713.568mil|Location2.Y=3724.818mil|Absolute=True">Silk To Silk Clearance Constraint: (0.095mm &lt; 0.254mm) Between Text "R15" (52.1mm,22.9mm) on Top Overlay And Track (7.112mm,24.003mm)(57.912mm,24.003mm) on Top Overlay Silk Text to Silk Clearance [0.095mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4394.966mil|Location2.X=4406.216mil|Location1.Y=3044.671mil|Location2.Y=3055.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4394.966mil|Location2.X=4406.216mil|Location1.Y=3044.671mil|Location2.Y=3055.921mil|Absolute=True">Silk To Silk Clearance Constraint: (0.024mm &lt; 0.254mm) Between Text "R16" (40.7mm,6.1mm) on Top Overlay And Track (42.926mm,6.604mm)(42.926mm,8.128mm) on Top Overlay Silk Text to Silk Clearance [0.024mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4458.712mil|Location2.X=4469.962mil|Location1.Y=3099.567mil|Location2.Y=3110.817mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4458.712mil|Location2.X=4469.962mil|Location1.Y=3099.567mil|Location2.Y=3110.817mil|Absolute=True">Silk To Silk Clearance Constraint: (0.064mm &lt; 0.254mm) Between Text "R4" (43.9mm,8.4mm) on Top Overlay And Track (42.926mm,8.128mm)(45.72mm,8.128mm) on Top Overlay Silk Text to Silk Clearance [0.064mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4394.922mil|Location2.X=4406.342mil|Location1.Y=3029.922mil|Location2.Y=3041.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4394.922mil|Location2.X=4406.342mil|Location1.Y=3029.922mil|Location2.Y=3041.172mil|Absolute=True">Silk To Silk Clearance Constraint: (0.12mm &lt; 0.254mm) Between Text "R16" (40.7mm,6.1mm) on Top Overlay And Track (42.926mm,6.604mm)(45.72mm,6.604mm) on Top Overlay Silk Text to Silk Clearance [0.12mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5047.725mil|Location2.X=5060.477mil|Location1.Y=3474.365mil|Location2.Y=3485.615mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5047.725mil|Location2.X=5060.477mil|Location1.Y=3474.365mil|Location2.Y=3485.615mil|Absolute=True">Silk To Silk Clearance Constraint: (0.105mm &lt; 0.254mm) Between Text "R14" (59.5mm,17.9mm) on Top Overlay And Track (59.309mm,16.129mm)(59.309mm,17.653mm) on Top Overlay Silk Text to Silk Clearance [0.105mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5072.885mil|Location2.X=5084.135mil|Location1.Y=3474.075mil|Location2.Y=3485.325mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5072.885mil|Location2.X=5084.135mil|Location1.Y=3474.075mil|Location2.Y=3485.325mil|Absolute=True">Silk To Silk Clearance Constraint: (0.039mm &lt; 0.254mm) Between Text "R14" (59.5mm,17.9mm) on Top Overlay And Track (59.309mm,17.653mm)(62.103mm,17.653mm) on Top Overlay Silk Text to Silk Clearance [0.039mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4834.023mil|Location2.X=4845.273mil|Location1.Y=3667.362mil|Location2.Y=3678.612mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4834.023mil|Location2.X=4845.273mil|Location1.Y=3667.362mil|Location2.Y=3678.612mil|Absolute=True">Silk To Silk Clearance Constraint: (0.22mm &lt; 0.254mm) Between Text "R15" (52.1mm,22.9mm) on Top Overlay And Track (52.738mm,22.472mm)(54.262mm,22.472mm) on Top Overlay Silk Text to Silk Clearance [0.22mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4782.997mil|Location2.X=4796.261mil|Location1.Y=3667.264mil|Location2.Y=3678.514mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4782.997mil|Location2.X=4796.261mil|Location1.Y=3667.264mil|Location2.Y=3678.514mil|Absolute=True">Silk To Silk Clearance Constraint: (0.237mm &lt; 0.254mm) Between Text "R15" (52.1mm,22.9mm) on Top Overlay And Track (52.738mm,19.678mm)(52.738mm,22.472mm) on Top Overlay Silk Text to Silk Clearance [0.237mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4490.091mil|Location2.X=4502.908mil|Location1.Y=3142.832mil|Location2.Y=3154.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4490.091mil|Location2.X=4502.908mil|Location1.Y=3142.832mil|Location2.Y=3154.082mil|Absolute=True">Silk To Silk Clearance Constraint: (0.197mm &lt; 0.254mm) Between Text "R4" (43.9mm,8.4mm) on Top Overlay And Track (45.339mm,9.525mm)(46.863mm,9.525mm) on Top Overlay Silk Text to Silk Clearance [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4490.091mil|Location2.X=4502.908mil|Location1.Y=3142.832mil|Location2.Y=3154.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4490.091mil|Location2.X=4502.908mil|Location1.Y=3142.832mil|Location2.Y=3154.082mil|Absolute=True">Silk To Silk Clearance Constraint: (0.197mm &lt; 0.254mm) Between Text "R4" (43.9mm,8.4mm) on Top Overlay And Track (45.339mm,9.525mm)(45.339mm,12.319mm) on Top Overlay Silk Text to Silk Clearance [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4560.847mil|Location2.X=4572.097mil|Location1.Y=3259.375mil|Location2.Y=3270.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4560.847mil|Location2.X=4572.097mil|Location1.Y=3259.375mil|Location2.Y=3270.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.129mm &lt; 0.254mm) Between Text "R12" (47.2mm,11.7mm) on Top Overlay And Track (45.339mm,12.319mm)(46.863mm,12.319mm) on Top Overlay Silk Text to Silk Clearance [0.129mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4560.847mil|Location2.X=4572.097mil|Location1.Y=3241.239mil|Location2.Y=3252.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4560.847mil|Location2.X=4572.097mil|Location1.Y=3241.239mil|Location2.Y=3252.489mil|Absolute=True">Silk To Silk Clearance Constraint: (0.129mm &lt; 0.254mm) Between Text "R12" (47.2mm,11.7mm) on Top Overlay And Track (46.863mm,9.525mm)(46.863mm,12.319mm) on Top Overlay Silk Text to Silk Clearance [0.129mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4439.362mil|Location2.X=4450.612mil|Location1.Y=3486.971mil|Location2.Y=3498.221mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4439.362mil|Location2.X=4450.612mil|Location1.Y=3486.971mil|Location2.Y=3498.221mil|Absolute=True">Silk To Silk Clearance Constraint: (0.1mm &lt; 0.254mm) Between Text "R10" (44.1mm,17.9mm) on Top Overlay And Track (43.792mm,18.079mm)(43.792mm,19.476mm) on Top Overlay Silk Text to Silk Clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4439.362mil|Location2.X=4450.612mil|Location1.Y=3486.147mil|Location2.Y=3497.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4439.362mil|Location2.X=4450.612mil|Location1.Y=3486.147mil|Location2.Y=3497.397mil|Absolute=True">Silk To Silk Clearance Constraint: (0.1mm &lt; 0.254mm) Between Text "R10" (44.1mm,17.9mm) on Top Overlay And Track (40.871mm,18.079mm)(43.792mm,18.079mm) on Top Overlay Silk Text to Silk Clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5137.654mil|Location2.X=5148.904mil|Location1.Y=3494.842mil|Location2.Y=3506.092mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5137.654mil|Location2.X=5148.904mil|Location1.Y=3494.842mil|Location2.Y=3506.092mil|Absolute=True">Silk To Silk Clearance Constraint: (0.141mm &lt; 0.254mm) Between Text "R14" (59.5mm,17.9mm) on Top Overlay And Track (61.849mm,17.78mm)(61.849mm,22.86mm) on Top Overlay Silk Text to Silk Clearance [0.141mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5135.699mil|Location2.X=5146.949mil|Location1.Y=3570.956mil|Location2.Y=3582.206mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5135.699mil|Location2.X=5146.949mil|Location1.Y=3570.956mil|Location2.Y=3582.206mil|Absolute=True">Silk To Silk Clearance Constraint: (0.241mm &lt; 0.254mm) Between Text "R13" (61.4mm,19.7mm) on Top Overlay And Track (61.849mm,17.78mm)(61.849mm,22.86mm) on Top Overlay Silk Text to Silk Clearance [0.241mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4437.5mil|Location2.X=4448.75mil|Location1.Y=3479.099mil|Location2.Y=3490.349mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4437.5mil|Location2.X=4448.75mil|Location1.Y=3479.099mil|Location2.Y=3490.349mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "R10" (44.1mm,17.9mm) on Top Overlay And Track (43.697mm,16.438mm)(43.697mm,17.962mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4437.5mil|Location2.X=4448.75mil|Location1.Y=3481.54mil|Location2.Y=3492.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4437.5mil|Location2.X=4448.75mil|Location1.Y=3481.54mil|Location2.Y=3492.79mil|Absolute=True">Silk To Silk Clearance Constraint: (0.195mm &lt; 0.254mm) Between Text "R10" (44.1mm,17.9mm) on Top Overlay And Track (40.903mm,17.962mm)(43.697mm,17.962mm) on Top Overlay Silk Text to Silk Clearance [0.195mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4970.523mil|Location2.X=4981.773mil|Location1.Y=3665.532mil|Location2.Y=3676.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4970.523mil|Location2.X=4981.773mil|Location1.Y=3665.532mil|Location2.Y=3676.782mil|Absolute=True">Silk To Silk Clearance Constraint: (0.113mm &lt; 0.254mm) Between Text "R7" (56.9mm,22.8mm) on Top Overlay And Track (56.388mm,22.479mm)(57.912mm,22.479mm) on Top Overlay Silk Text to Silk Clearance [0.113mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4985.748mil|Location2.X=4998.018mil|Location1.Y=3665.908mil|Location2.Y=3677.158mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4985.748mil|Location2.X=4998.018mil|Location1.Y=3665.908mil|Location2.Y=3677.158mil|Absolute=True">Silk To Silk Clearance Constraint: (0.18mm &lt; 0.254mm) Between Text "R7" (56.9mm,22.8mm) on Top Overlay And Track (57.912mm,19.685mm)(57.912mm,22.479mm) on Top Overlay Silk Text to Silk Clearance [0.18mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4867.775mil|Location2.X=4881.422mil|Location1.Y=3667.583mil|Location2.Y=3678.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4867.775mil|Location2.X=4881.422mil|Location1.Y=3667.583mil|Location2.Y=3678.833mil|Absolute=True">Silk To Silk Clearance Constraint: (0.251mm &lt; 0.254mm) Between Text "R6" (54.9mm,22.9mm) on Top Overlay And Track (54.737mm,19.685mm)(54.737mm,22.479mm) on Top Overlay Silk Text to Silk Clearance [0.251mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4891.783mil|Location2.X=4903.033mil|Location1.Y=3667.5mil|Location2.Y=3678.75mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4891.783mil|Location2.X=4903.033mil|Location1.Y=3667.5mil|Location2.Y=3678.75mil|Absolute=True">Silk To Silk Clearance Constraint: (0.213mm &lt; 0.254mm) Between Text "R6" (54.9mm,22.9mm) on Top Overlay And Track (54.737mm,22.479mm)(56.261mm,22.479mm) on Top Overlay Silk Text to Silk Clearance [0.213mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4920.98mil|Location2.X=4933.9mil|Location1.Y=3667.572mil|Location2.Y=3678.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4920.98mil|Location2.X=4933.9mil|Location1.Y=3667.572mil|Location2.Y=3678.822mil|Absolute=True">Silk To Silk Clearance Constraint: (0.251mm &lt; 0.254mm) Between Text "R6" (54.9mm,22.9mm) on Top Overlay And Track (56.261mm,19.685mm)(56.261mm,22.479mm) on Top Overlay Silk Text to Silk Clearance [0.251mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4486.787mil|Location2.X=4500.434mil|Location1.Y=3143.128mil|Location2.Y=3154.378mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4486.787mil|Location2.X=4500.434mil|Location1.Y=3143.128mil|Location2.Y=3154.378mil|Absolute=True">Silk To Silk Clearance Constraint: (0.144mm &lt; 0.254mm) Between Text "R4" (43.9mm,8.4mm) on Top Overlay And Track (45.212mm,9.525mm)(45.212mm,12.319mm) on Top Overlay Silk Text to Silk Clearance [0.144mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4437.721mil|Location2.X=4448.971mil|Location1.Y=3143.135mil|Location2.Y=3154.385mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4437.721mil|Location2.X=4448.971mil|Location1.Y=3143.135mil|Location2.Y=3154.385mil|Absolute=True">Silk To Silk Clearance Constraint: (0.117mm &lt; 0.254mm) Between Text "R4" (43.9mm,8.4mm) on Top Overlay And Track (43.688mm,9.525mm)(45.212mm,9.525mm) on Top Overlay Silk Text to Silk Clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4432.983mil|Location2.X=4445.305mil|Location1.Y=3142.75mil|Location2.Y=3154mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4432.983mil|Location2.X=4445.305mil|Location1.Y=3142.75mil|Location2.Y=3154mil|Absolute=True">Silk To Silk Clearance Constraint: (0.183mm &lt; 0.254mm) Between Text "R4" (43.9mm,8.4mm) on Top Overlay And Track (43.688mm,9.525mm)(43.688mm,12.319mm) on Top Overlay Silk Text to Silk Clearance [0.183mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3990.213mil|Location2.X=4001.463mil|Location1.Y=3150.201mil|Location2.Y=3161.451mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3990.213mil|Location2.X=4001.463mil|Location1.Y=3150.201mil|Location2.Y=3161.451mil|Absolute=True">Silk To Silk Clearance Constraint: (0.076mm &lt; 0.254mm) Between Text "C7" (32.4mm,8.6mm) on Top Overlay And Track (30.922mm,9.684mm)(34.478mm,9.684mm) on Top Overlay Silk Text to Silk Clearance [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4213.701mil|Location2.X=4224.951mil|Location1.Y=3218.396mil|Location2.Y=3229.646mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4213.701mil|Location2.X=4224.951mil|Location1.Y=3218.396mil|Location2.Y=3229.646mil|Absolute=True">Silk To Silk Clearance Constraint: (0.164mm &lt; 0.254mm) Between Text "C8" (38.4mm,11.1mm) on Top Overlay And Track (38.028mm,9.684mm)(38.028mm,11.716mm) on Top Overlay Silk Text to Silk Clearance [0.164mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4213.701mil|Location2.X=4224.951mil|Location1.Y=3235.635mil|Location2.Y=3246.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4213.701mil|Location2.X=4224.951mil|Location1.Y=3235.635mil|Location2.Y=3246.885mil|Absolute=True">Silk To Silk Clearance Constraint: (0.164mm &lt; 0.254mm) Between Text "C8" (38.4mm,11.1mm) on Top Overlay And Track (34.472mm,11.716mm)(38.028mm,11.716mm) on Top Overlay Silk Text to Silk Clearance [0.164mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4022.86mil|Location2.X=4034.11mil|Location1.Y=3506.659mil|Location2.Y=3517.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4022.86mil|Location2.X=4034.11mil|Location1.Y=3506.659mil|Location2.Y=3517.909mil|Absolute=True">Silk To Silk Clearance Constraint: (0.243mm &lt; 0.254mm) Between Text "C11" (31.4mm,18.6mm) on Top Overlay And Track (33.584mm,16.322mm)(33.584mm,19.878mm) on Top Overlay Silk Text to Silk Clearance [0.243mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5191.225mil|Location2.X=5202.475mil|Location1.Y=3145.677mil|Location2.Y=3156.927mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5191.225mil|Location2.X=5202.475mil|Location1.Y=3145.677mil|Location2.Y=3156.927mil|Absolute=True">Silk To Silk Clearance Constraint: (0.252mm &lt; 0.254mm) Between Text "CHARGING" (58.4mm,8.4mm) on Top Overlay And Track (62.992mm,9.652mm)(62.992mm,11.176mm) on Top Overlay Silk Text to Silk Clearance [0.252mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5082.055mil|Location2.X=5093.305mil|Location1.Y=3145.635mil|Location2.Y=3156.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5082.055mil|Location2.X=5093.305mil|Location1.Y=3145.635mil|Location2.Y=3156.885mil|Absolute=True">Silk To Silk Clearance Constraint: (0.244mm &lt; 0.254mm) Between Text "CHARGING" (58.4mm,8.4mm) on Top Overlay And Track (59.944mm,9.652mm)(63.246mm,9.652mm) on Top Overlay Silk Text to Silk Clearance [0.244mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4229.06mil|Location2.X=4240.31mil|Location1.Y=3127.953mil|Location2.Y=3139.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4229.06mil|Location2.X=4240.31mil|Location1.Y=3127.953mil|Location2.Y=3139.203mil|Absolute=True">Silk To Silk Clearance Constraint: (0.222mm &lt; 0.254mm) Between Text "P2" (38.6mm,9.2mm) on Top Overlay And Track (34.93mm,8.77mm)(40.01mm,8.77mm) on Top Overlay Silk Text to Silk Clearance [0.222mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4282.596mil|Location2.X=4293.846mil|Location1.Y=3127.899mil|Location2.Y=3139.149mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4282.596mil|Location2.X=4293.846mil|Location1.Y=3127.899mil|Location2.Y=3139.149mil|Absolute=True">Silk To Silk Clearance Constraint: (0.231mm &lt; 0.254mm) Between Text "P2" (38.6mm,9.2mm) on Top Overlay And Track (40.01mm,6.23mm)(40.01mm,8.77mm) on Top Overlay Silk Text to Silk Clearance [0.231mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4531.588mil|Location2.X=4542.838mil|Location1.Y=3508.423mil|Location2.Y=3521.733mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4531.588mil|Location2.X=4542.838mil|Location1.Y=3508.423mil|Location2.Y=3521.733mil|Absolute=True">Silk To Silk Clearance Constraint: (0.242mm &lt; 0.254mm) Between Text "R10" (44.1mm,17.9mm) on Top Overlay And Track (46.482mm,18.796mm)(48.514mm,18.796mm) on Top Overlay Silk Text to Silk Clearance [0.242mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4531.588mil|Location2.X=4542.838mil|Location1.Y=3508.423mil|Location2.Y=3521.733mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4531.588mil|Location2.X=4542.838mil|Location1.Y=3508.423mil|Location2.Y=3521.733mil|Absolute=True">Silk To Silk Clearance Constraint: (0.242mm &lt; 0.254mm) Between Text "R10" (44.1mm,17.9mm) on Top Overlay And Track (46.482mm,18.796mm)(46.482mm,22.352mm) on Top Overlay Silk Text to Silk Clearance [0.242mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4549.268mil|Location2.X=4560.518mil|Location1.Y=3663.032mil|Location2.Y=3674.282mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4549.268mil|Location2.X=4560.518mil|Location1.Y=3663.032mil|Location2.Y=3674.282mil|Absolute=True">Silk To Silk Clearance Constraint: (0.24mm &lt; 0.254mm) Between Text "C5" (46.6mm,22.8mm) on Top Overlay And Track (46.482mm,22.352mm)(48.514mm,22.352mm) on Top Overlay Silk Text to Silk Clearance [0.24mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4523.142mil|Location2.X=4534.392mil|Location1.Y=3475.608mil|Location2.Y=3486.858mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4523.142mil|Location2.X=4534.392mil|Location1.Y=3475.608mil|Location2.Y=3486.858mil|Absolute=True">Silk To Silk Clearance Constraint: (0.055mm &lt; 0.254mm) Between Text "R10" (44.1mm,17.9mm) on Top Overlay And Track (46.16mm,17.721mm)(46.66mm,17.721mm) on Top Overlay Silk Text to Silk Clearance [0.055mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4518.453mil|Location2.X=4529.703mil|Location1.Y=3404.286mil|Location2.Y=3415.536mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4518.453mil|Location2.X=4529.703mil|Location1.Y=3404.286mil|Location2.Y=3415.536mil|Absolute=True">Silk To Silk Clearance Constraint: (0.219mm &lt; 0.254mm) Between Text "R5" (44.4mm,15.2mm) on Top Overlay And Track (46.16mm,13.521mm)(46.16mm,17.721mm) on Top Overlay Silk Text to Silk Clearance [0.219mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4523.142mil|Location2.X=4534.392mil|Location1.Y=3475.608mil|Location2.Y=3486.858mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4523.142mil|Location2.X=4534.392mil|Location1.Y=3475.608mil|Location2.Y=3486.858mil|Absolute=True">Silk To Silk Clearance Constraint: (0.055mm &lt; 0.254mm) Between Text "R10" (44.1mm,17.9mm) on Top Overlay And Track (46.16mm,13.521mm)(46.16mm,17.721mm) on Top Overlay Silk Text to Silk Clearance [0.055mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4643.757mil|Location2.X=4655.007mil|Location1.Y=3663.032mil|Location2.Y=3674.282mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4643.757mil|Location2.X=4655.007mil|Location1.Y=3663.032mil|Location2.Y=3674.282mil|Absolute=True">Silk To Silk Clearance Constraint: (0.24mm &lt; 0.254mm) Between Text "C4" (49mm,22.8mm) on Top Overlay And Track (48.768mm,22.352mm)(50.8mm,22.352mm) on Top Overlay Silk Text to Silk Clearance [0.24mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4209.41mil|Location2.X=4220.66mil|Location1.Y=2984.375mil|Location2.Y=2995.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4209.41mil|Location2.X=4220.66mil|Location1.Y=2984.375mil|Location2.Y=2995.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.182mm &lt; 0.254mm) Between Text "P1" (38.3mm,4.6mm) on Top Overlay And Track (32.83mm,5.334mm)(37.91mm,5.334mm) on Top Overlay Silk Text to Silk Clearance [0.182mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4209.41mil|Location2.X=4220.66mil|Location1.Y=2955.477mil|Location2.Y=2966.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4209.41mil|Location2.X=4220.66mil|Location1.Y=2955.477mil|Location2.Y=2966.727mil|Absolute=True">Silk To Silk Clearance Constraint: (0.182mm &lt; 0.254mm) Between Text "P1" (38.3mm,4.6mm) on Top Overlay And Track (37.91mm,2.794mm)(37.91mm,5.334mm) on Top Overlay Silk Text to Silk Clearance [0.182mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4227.739mil|Location2.X=4238.989mil|Location1.Y=3660.852mil|Location2.Y=3672.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4227.739mil|Location2.X=4238.989mil|Location1.Y=3660.852mil|Location2.Y=3672.102mil|Absolute=True">Silk To Silk Clearance Constraint: (0.253mm &lt; 0.254mm) Between Text "R3" (38.8mm,21.7mm) on Top Overlay And Text "C9" (37mm,22.4mm) on Top Overlay Silk Text to Silk Clearance [0.253mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3683.127mil|Location2.X=3694.377mil|Location1.Y=3522.116mil|Location2.Y=3533.366mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3683.127mil|Location2.X=3694.377mil|Location1.Y=3522.116mil|Location2.Y=3533.366mil|Absolute=True">Silk To Silk Clearance Constraint: (0.169mm &lt; 0.254mm) Between Text "U4" (25.193mm,19.185mm) on Top Overlay And Text "C13" (24.6mm,18mm) on Top Overlay Silk Text to Silk Clearance [0.169mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
