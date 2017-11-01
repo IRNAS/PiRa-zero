@@ -1,6 +1,52 @@
 ![irnas_logo](https://github.com/IRNAS/PiRA-RTC-HAT/blob/master/Pics/irnas_logo.png)
-# PiRA RTC HAT 
-### Power in Responsive Applications HAT for Raspberry Pi Zero with RTC for power saving mode.
+# PiRA zero 
+## Power in Responsive Applications HAT for Raspberry Pi with RTC for power saving mode
+PiRa zero is a compact shield for power scheduling on Rasppbery Pi and similar devices in solar and wirelessly powered applications. It implements the following key features:
+
+## Features
+
+ * single cell LiPo cell charging of up to 3A (multiple 18650 cells supported)
+ * solar panel charging (Voltaic systems 6W panels in parallel recommended)
+ * USB charging, compatible with QI wireless chargers
+ * advanced current limiting, to support wide array of chargers
+ * precise charging control via i2c (BQ24296)
+ * battery temperature protection with thermistor
+ * battery reverse polarity protection and fuse (3A)
+ * advancerd power scheduling for robust applications
+  * power timer TPL5110 for configurable scheduled boot 1s-7200s or one-time power up on charging
+  * RTC DS3231 for configurable scheduled boot and timekeeping
+  * configurable power-up sources
+   * power-up on charging
+   * power-up from power timer
+   * power-up from RTC
+   * power-up from self-enable (cpu signal)
+ * high-current battery output mosfet (for 3G or satellite modems)
+ * 5V regulated output enabled from timing sources
+ * LORA RMF95 communication module
+ * battery voltage precise measurement (MCP3021)
+
+## Connector pinout
+ * All ground pins connected, UART, SPI pins connected
+ * Pin 1 - 3V3 - from Pi to board
+ * Pin 2 - 5V - from board to Pi
+ * Pin 3 - SDA
+ * Pin 4 - 5V - from board to Pi
+ * Pin 5 - SCL
+ * Pin 7 - BCM 4 - RTC-EN - input, detect wake-up from RTC
+ * Pin 11 - BCM 17 - Timer-EN - input, detect wake-up from RTC
+ * Pin 12 - BCM 18 - CPU self-enable - output, keep high until shutdown
+ * Pin 13 - BCM 27 - Timer done - output, set high to signal timer to power off
+ * Pin 15 - BCM 22 - RTC-reset - output, reset RTC if needed
+ * Pin 16 - BCM 23 - GPO-FET - output, enable mosfet output
+ * Pin 18 - BCM 23 - GPO-LED - output, status LED
+ * Pin 22 - BCM 25 - GPIO BCM25 - available at header
+ * Pin 29 - BCM 5 - GPIO BCM 5 - available at header
+ * Pin 31 - BCM 6 - GPIO BCM 6 - available at header
+ * Pin 33 - BCM 13 - LORA reset
+
+## Power consumption
+TODO
+
 ---
 
 #### License
