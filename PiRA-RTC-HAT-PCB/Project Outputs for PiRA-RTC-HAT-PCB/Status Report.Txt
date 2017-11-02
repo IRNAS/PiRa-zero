@@ -1,0 +1,14 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : PCB Document [PiRA-RTC-HAT-PCB.PcbDoc]
+   Generated File[NC Drill Files-RoundHoles.TXT]
+   Generated File[NC Drill Files-SlotHoles.TXT]
+   Generated File[NC Drill Files.DRL]
+   Generated File[NC Drill Files.LDP]
+   Generated File[NC Drill Files.DRR]
+
+
+Files Generated   : 5
+Documents Printed : 0
+
+Finished Output Generation At 10:09:51 AM On 11/02/2017

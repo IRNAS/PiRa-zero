@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\PiRA-RTC-HAT-PCB.PcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=nc drill files-roundholes.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_Slot_Holes|DrillFile=nc drill files-slotholes.txt|DrillLayers=gtl,gbl
