@@ -32,13 +32,12 @@ PiRa zero is a compact shield for power scheduling on Rasppbery Pi and similar d
  * Pin 3 - SDA
  * Pin 4 - 5V - from board to Pi
  * Pin 5 - SCL
- * Pin 7 - BCM 4 - RTC-EN - input, detect wake-up from RTC
+ * Pin 7 - BCM 4 - RTC-Reset- output, reset RTC if needed
  * Pin 11 - BCM 17 - Timer-EN - input, detect wake-up from RTC
  * Pin 12 - BCM 18 - CPU self-enable - output, keep high until shutdown
  * Pin 13 - BCM 27 - Timer done - output, set high to signal timer to power off
- * Pin 15 - BCM 22 - RTC-reset - output, reset RTC if needed
+ * Pin 15 - BCM 22 - RTC-EN - input, detect wake-up from RTC
  * Pin 16 - BCM 23 - GPO-FET - output, enable mosfet output
- * Pin 18 - BCM 23 - GPO-LED - output, status LED
  * Pin 22 - BCM 25 - GPIO BCM25 - available at header
  * Pin 29 - BCM 5 - GPIO BCM 5 - available at header
  * Pin 31 - BCM 6 - GPIO BCM 6 - available at header
