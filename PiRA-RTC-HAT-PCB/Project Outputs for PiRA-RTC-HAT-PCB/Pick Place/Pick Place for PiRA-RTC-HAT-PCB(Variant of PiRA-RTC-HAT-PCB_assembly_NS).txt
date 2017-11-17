@@ -1,0 +1,76 @@
+Altium Designer Pick and Place Locations
+C:\Users\vojislav\Documents\PiRA-RTC-HAT\PiRA-RTC-HAT-PCB\Project Outputs for PiRA-RTC-HAT-PCB\Pick Place\Pick Place for PiRA-RTC-HAT-PCB(Variant of PiRA-RTC-HAT-PCB_assembly_NS).txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       13/11/17
+Time:       09:54
+Revision:   Not in VersionControl
+Variant:    Variant of PiRA-RTC-HAT-PCB_assembly_NS
+Units used: mm
+
+Designator Comment            Layer       Footprint                   Center-X(mm) Center-Y(mm) Rotation Description                                                                   
+C3         47n                TopLayer    CAP0603                     53.1000      12.2000      270      "MULTICOMP - MC0603B473K500CT - CAP, MLCC, X7R, 47NF, 50V, 0603"              
+U4         MCP3021            TopLayer    SOT23127P600-8N_-_DUPLICATE 28.0000      20.9000      90       "MICROCHIP - MCP3021A5T-E/OT - 10BIT ADC, I2C, 1CH, SMD, SOT-23A-5"           
+U2         TPS630701RNMT      TopLayer    VQFN_TPS                    40.6375      16.9500      90       "TEXAS INSTRUMENTS - TPS630701RNMT - DC/DC CONV, BUCK-BOOST, 2.4MHZ, VQFN-15" 
+T3         2N7002,215         TopLayer    SOT23127P600-8N             20.7000      17.1000      180      "NEXPERIA - 2N7002,215 - MOSFET,N CH, 60V,0.3A,SOT23"                         
+T2         BSZ120P03NS3GATMA1 TopLayer    PG-TSDSON-8                 27.9000      7.4000       360      "INFINEON - BSZ120P03NS3GATMA1 - MOSFET, P-CH, -30V, -40A, PG-TSDSON-8"       
+T1         MMBT3904           TopLayer    SOT23127P600-8N             49.9000      10.1000      360      "ON SEMICONDUCTOR/FAIRCHILD - MMBT3904 - TRANSISTOR, NPN, SOT-23"             
+R27        100R               TopLayer    RES0603                     23.0000      5.9000       180      "MULTICOMP - MC0063W06031100R - RES, THICK FILM, 100R, 1%, 0.063W, 0603"      
+R26        499k               TopLayer    RES0603                     27.6000      16.8000      270      "MULTICOMP - MC0063W06031499K - RES, THICK FILM, 499K, 1%, 0.063W, 0603"      
+R25        47k                TopLayer    RES0603                     15.2000      6.6000       180      "MULTICOMP - MCMR06X4702FTL - RES, CERAMIC, 47K, 1%, 0.1W, 0603"              
+R24        0R                 TopLayer    RES0603                     32.2000      21.4000      270      "BOURNS - CR0603-J/-000ELF - RES, THICK FILM, 0R, 5%, 0.1W, 0603"             
+R23        47k                TopLayer    RES0603                     22.0000      20.0000      180      "MULTICOMP - MCMR06X4702FTL - RES, CERAMIC, 47K, 1%, 0.1W, 0603"              
+R22        10k                TopLayer    RES0603                     8.0000       6.4000       270      "MULTICOMP - MCMR06X103 JTL - RES, CERAMIC, 10K, 5%, 0.1W, 0603"              
+R21        10k                TopLayer    RES0603                     10.0000      21.9000      90       "MULTICOMP - MCMR06X103 JTL - RES, CERAMIC, 10K, 5%, 0.1W, 0603"              
+R20        10k                TopLayer    RES0603                     11.7000      21.9000      90       "MULTICOMP - MCMR06X103 JTL - RES, CERAMIC, 10K, 5%, 0.1W, 0603"              
+R19        100k               TopLayer    RES0603                     24.9000      15.8750      360      "MULTICOMP - MCMR06X104 JTL - RES, CERAMIC, 100K, 5%, 0.1W, 0603"             
+R18        100R               TopLayer    RES0603                     24.8000      17.6000      180      "MULTICOMP - MC0063W06031100R - RES, THICK FILM, 100R, 1%, 0.063W, 0603"      
+R17        100k               TopLayer    RES0603                     23.0000      7.8000       360      "MULTICOMP - MCMR06X104 JTL - RES, CERAMIC, 100K, 5%, 0.1W, 0603"             
+R16        10k                TopLayer    RES0603                     44.5230      9.5660       360      "MULTICOMP - MCMR06X103 JTL - RES, CERAMIC, 10K, 5%, 0.1W, 0603"              
+R15        33k                TopLayer    RES0603                     53.9000      21.5000      90       "MULTICOMP - MCWR06X3302FTL - RES, THICK FILM, 33K, 1%, 0.1W, 0603"           
+R14        0R                 TopLayer    RES0603                     62.5060      16.9910      180      "BOURNS - CR0603-J/-000ELF - RES, THICK FILM, 0R, 5%, 0.1W, 0603"             
+R13        470R               TopLayer    RES0603                     59.5000      21.5000      270      "MULTICOMP - MCMR06X471 JTL - RES, CERAMIC, 470R, 5%, 0.1W, 0603"             
+R12        10k                TopLayer    RES0603                     46.0010      12.4220      90       "MULTICOMP - MCMR06X103 JTL - RES, CERAMIC, 10K, 5%, 0.1W, 0603"              
+R10        10k                TopLayer    RES0603                     44.7000      17.6000      180      "MULTICOMP - MCMR06X103 JTL - RES, CERAMIC, 10K, 5%, 0.1W, 0603"              
+R9         470k               TopLayer    RES0603                     44.7000      16.0000      180      "MULTICOMP - MCWR06X4703FTL - RES, THICK FILM, 470K, 1%, 0.1W, 0603"          
+R8         150k               TopLayer    RES0603                     44.7000      20.8000      180      "MULTICOMP - MCWR06X1503FTL - RES, THICK FILM, 150KOHM, 1%, 0.1W"             
+R7         220R               TopLayer    RES0603                     57.4000      21.5000      270      "MULTICOMP - MCWR06X2200FTL - RES, THICK FILM, 220R, 1%, 0.1W, 0603"          
+R6         5k6                TopLayer    RES0603                     55.7000      21.5000      90       "MULTICOMP - MCMR06X5601FTL - RES, CERAMIC, 5K6, 1%, 0.1W, 0603"              
+R5         10k                TopLayer    RES0603                     61.4000      21.5000      90       "MULTICOMP - MCMR06X103 JTL - RES, CERAMIC, 10K, 5%, 0.1W, 0603"              
+R4         3k9                TopLayer    RES0603                     44.3500      12.4220      270      "MULTICOMP - MCWR06X3901FTL - RES, THICK FILM, 3K9, 1%, 0.1W, 0603"           
+R3         0R                 TopLayer    RES0603                     44.7000      22.4000      180      "BOURNS - CR0603-J/-000ELF - RES, THICK FILM, 0R, 5%, 0.1W, 0603"             
+R2         0R                 TopLayer    RES0603                     62.5060      15.2400      180      "BOURNS - CR0603-J/-000ELF - RES, THICK FILM, 0R, 5%, 0.1W, 0603"             
+R1         470R               TopLayer    RES0603                     62.5000      12.3000      180      "MULTICOMP - MCMR06X471 JTL - RES, CERAMIC, 470R, 5%, 0.1W, 0603"             
+L2         1.5uH              TopLayer    FDSD0402                    33.1000      17.0000      180      "MURATA - FDSD0420-H-1R5M=P3 - INDUCTOR, SHIELDED, 1.5UH, 5.1A, 20%"          
+L1         1.5uH              TopLayer    FDSD0402                    49.6000      15.5000      180      "MURATA - FDSD0420-H-1R5M=P3 - INDUCTOR, SHIELDED, 1.5UH, 5.1A, 20%"          
+D2         3V                 TopLayer    SOD-323_2L                  42.4450      12.2950      270      "ON SEMICONDUCTOR - MM3Z3V0T1G - ZENER DIODE, 200MW, 3V, SOD-323"             
+D1         "LED RED"          TopLayer    LED0603                     62.5000      10.5000      180      "BROADCOM LIMITED - HSMS-C190 - LED, RED, 10MCD, 626NM"                       
+C13        100nF              TopLayer    CAP0603                     24.8000      20.7000      270      "MURATA - GRM188R71C104KA01J - CAP, MLCC, X7R, 0.1UF, 16V, 0603"              
+C12        100nF              TopLayer    CAP0603                     44.7311      19.1775      180      "MURATA - GRM188R71C104KA01J - CAP, MLCC, X7R, 0.1UF, 16V, 0603"              
+C11        "10uF /16V"        TopLayer    CAP0805                     36.9000      19.3000      90       "TDK - CGA4J1X5R1C106K125AC - CAP, MLCC, X5R, 10UF, 16V, 0805"                
+C10        22u                TopLayer    CAP0805                     35.2000      22.1000      360      "MULTICOMP - MC0805X226M6R3CT - CAP, MLCC, X5R, 22UF, 0805"                   
+C9         22u                TopLayer    CAP0805                     38.8500      22.1000      180      "MULTICOMP - MC0805X226M6R3CT - CAP, MLCC, X5R, 22UF, 0805"                   
+C8         22u                TopLayer    CAP0805                     38.5500      11.9000      180      "MULTICOMP - MC0805X226M6R3CT - CAP, MLCC, X5R, 22UF, 0805"                   
+C7         22u                TopLayer    CAP0805                     35.0000      11.9000      360      "MULTICOMP - MC0805X226M6R3CT - CAP, MLCC, X5R, 22UF, 0805"                   
+C6         "10uF /16V"        TopLayer    CAP0805                     36.9000      14.7000      270      "TDK - CGA4J1X5R1C106K125AC - CAP, MLCC, X5R, 10UF, 16V, 0805"                
+C5         "10uF /16V"        TopLayer    CAP0805                     48.7000      20.4000      90       "TDK - CGA4J1X5R1C106K125AC - CAP, MLCC, X5R, 10UF, 16V, 0805"                
+C4         "10uF /16V"        TopLayer    CAP0805                     51.1000      20.4000      90       "TDK - CGA4J1X5R1C106K125AC - CAP, MLCC, X5R, 10UF, 16V, 0805"                
+C2         4u7/16V            TopLayer    CAP0603                     55.7000      10.6000      270      "MURATA - GRM188R61C475KAAJD - CAP, MLCC, X5R, 4.7UF, 16V, 0603"              
+C1         "10uF /16V"        TopLayer    CAP0805                     57.8000      11.0000      270      "TDK - CGA4J1X5R1C106K125AC - CAP, MLCC, X5R, 10UF, 16V, 0805"                
+C14        100nF              TopLayer    CAP0603                     5.2000       10.3000      270      "MURATA - GRM188R71C104KA01J - CAP, MLCC, X7R, 0.1UF, 16V, 0603"              
+CON2       U.FL-R-SMT-1(10)   BottomLayer uFL_SMD_connector           5.4500       21.1000      90       "HIROSE(HRS) - U.FL-R-SMT-1(10) - RF COAXIAL, U.FL, STRAIGHT JACK, 50OHM"     
+D4         RS1J-E3/61T..      TopLayer    SMC/DO-214AC                36.1000      9.4000       180      "VISHAY - RS1J-E3/61T.. - DIODE, FAST, 1A, 600V, SMD"                         
+D6         BZT52C6V2          TopLayer    SOD123                      58.7000      7.8000       360      "DIODES INC. - BZT52C6V2 - DIODE, ZENER, 6.2V, 0.5W, SOD-123"                 
+J1         Socket             TopLayer    PIN1                        1.5000       21.1000      270      Socket                                                                        
+R28        0R                 TopLayer    RES0603                     13.9000      21.9000      90       "BOURNS - CR0603-J/-000ELF - RES, THICK FILM, 0R, 5%, 0.1W, 0603"             
+R29        499k               TopLayer    RES0603                     29.2000      16.8000      90       "MULTICOMP - MC0063W06031499K - RES, THICK FILM, 499K, 1%, 0.063W, 0603"      
+R30        10R                TopLayer    RES0603                     62.6000      8.0000       180      "VISHAY - RCA060310R0FKEA - RES, AUTO, THICK FILM, 10R, 1%, 0603"             
+R31        10k                TopLayer    RES0603                     18.5000      8.3000       270      "MULTICOMP - MCMR06X103 JTL - RES, CERAMIC, 10K, 5%, 0.1W, 0603"              
+U5         DMG6602SVT         TopLayer    TSOT26                      25.1000      12.7000      0        "DIODES INC. - DMG6602SVT - MOSFET, NP CH, , 30V, 3.4, ATSOT23"               
+U6         DMG6602SVT         TopLayer    TSOT26                      29.2000      13.3000      270      "DIODES INC. - DMG6602SVT - MOSFET, NP CH, , 30V, 3.4, ATSOT23"               
+U8         TPL5110            TopLayer    SOT236                      20.6000      11.6000      0        "TEXAS INSTRUMENTS - TPL5110DDCT - NANO TIMER, SINGLE, 5.5V, SOT-23-6"        
+D5         SE30AFG-M3/6A      TopLayer    SODFL127P600-8N             50.5000      6.7000       180      "VISHAY - SE30AFG-M3/6A - RECTIFIER, ESD, 400V, 3A, DO-221AC"                 
+F1         3A                 BottomLayer Chip2PinSM127P600-8N        35.8000      7.5000       180      "LITTELFUSE - MINISMDC150F/24-2 - POLYSWITCH, SMD, 1812, 1.5A"                
+U1         BQ24296RGET        TopLayer    QFN4x4                      57.0000      16.1000      360      "IC LI+ CHARGER PWR MGMT 24VQFN"                                              

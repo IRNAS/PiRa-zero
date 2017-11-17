@@ -1,14 +1,14 @@
 Project Outputs Generation Report
 ---------------------------------
-Start Output Generation At 11:59:47 AM On 11/06/2017
+Start Output Generation At 9:54:32 AM On 11/13/2017
 
-Output: Bill of Materials production
-Type  : BOM
-From  : Variant [[No Variations]] of Project [PiRA-RTC-HAT-PCB.PrjPcb]
-   Generated File[Bill of Materials production.xlsx]
+Output: Generates pick and place files
+Type  : Pick Place
+From  : Variant [Variant of PiRA-RTC-HAT-PCB_assembly_NS] of PCB Document [PiRA-RTC-HAT-PCB.PcbDoc]
+   Generated File[Pick Place for PiRA-RTC-HAT-PCB(Variant of PiRA-RTC-HAT-PCB_assembly_NS).txt]
 
 
 Files Generated   : 1
 Documents Printed : 0
 
-Finished Output Generation At 12:00:19 PM On 11/06/2017
+Finished Output Generation At 9:54:35 AM On 11/13/2017
