@@ -1,4 +1,4 @@
-![irnas_logo](https://github.com/IRNAS/PiRA-RTC-HAT/blob/master/Pics/irnas_logo.png)
+![irnas_logo](https://github.com/IRNAS/PiRA-RTC-HAT/blob/master/pira-zero-pitstop.jpg)
 # PiRA zero 
 ## Power in Responsive Applications HAT for Raspberry Pi with RTC for power saving mode
 PiRa zero is a compact shield for power scheduling on Rasppbery Pi and similar devices in solar and wirelessly powered applications. It implements the following key features:
