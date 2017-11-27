@@ -28,7 +28,7 @@ DItemRevisionGUID=
 ReportSuppressedErrorsInMessages=0
 FSMCodingStyle=eFMSDropDownList_OneProcess
 FSMEncodingStyle=eFMSDropDownList_OneHot
-OutputPath=
+OutputPath=Project Outputs for PiRA-RTC-HAT-PCB
 LogFolderPath=
 ManagedProjectGUID=
 LinkedManagedProjectGUID=
@@ -239,7 +239,7 @@ SCH_HasExpandLogicalToPhysicalSheets=-1
 SaveSettingsToOutJob=0
 
 [Generic_EDE]
-OutputDir=
+OutputDir=Project Outputs for PiRA-RTC-HAT-PCB
 
 [OutputGroup1]
 Name=Netlist Outputs
