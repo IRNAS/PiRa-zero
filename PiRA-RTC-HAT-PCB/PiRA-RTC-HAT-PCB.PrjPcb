@@ -168,12 +168,39 @@ Variation2=Designator=U3|UniqueId=\IWIKYDRO|Kind=1|AlternatePart=
 Variation3=Designator=P5|UniqueId=\IUKFPDFA|Kind=1|AlternatePart= 
 ParamVariationCount=0
 
+[ProjectVariant2]
+UniqueID=D5F29813-3F18-417D-B4F4-0C6330294E70
+Description=PiRA-RTC-HAT-PCB_V0.3
+AllowFabrication=0
+ParameterCount=0
+VariationCount=11
+Variation1=Designator=CON2|UniqueId=\UWTAWBCJ|Kind=1|AlternatePart= 
+Variation2=Designator=P9|UniqueId=\XIFYFXBJ|Kind=1|AlternatePart= 
+Variation3=Designator=P7|UniqueId=\ULCHMBFP|Kind=1|AlternatePart= 
+Variation4=Designator=P6|UniqueId=\IMUTSFSE|Kind=1|AlternatePart= 
+Variation5=Designator=P8|UniqueId=\FMQWAIVC|Kind=1|AlternatePart= 
+Variation6=Designator=P2|UniqueId=\NXSHWNNN|Kind=1|AlternatePart= 
+Variation7=Designator=P4|UniqueId=\LWBMXHYL|Kind=1|AlternatePart= 
+Variation8=Designator=P1|UniqueId=\EWDKWKBG|Kind=1|AlternatePart= 
+Variation9=Designator=P3|UniqueId=\FROUFSRW|Kind=1|AlternatePart= 
+Variation10=Designator=J1|UniqueId=\CUBJSUQF|Kind=1|AlternatePart= 
+Variation11=Designator=P5|UniqueId=\IUKFPDFA|Kind=1|AlternatePart= 
+ParamVariationCount=0
+
 [GeneratedDocument1]
 DocumentPath=Project Outputs for PiRA-RTC-HAT-PCB\BOM\Bill of Materials production.xlsx
 DItemRevisionGUID=
 
 [GeneratedDocument2]
+DocumentPath=Project Outputs for PiRA-RTC-HAT-PCB\BOM\COM_pira_zero_v0.3.xlsx
+DItemRevisionGUID=
+
+[GeneratedDocument3]
 DocumentPath=Project Outputs for PiRA-RTC-HAT-PCB\Design Rule Check - PiRA-RTC-HAT-PCB.html
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Project Outputs for PiRA-RTC-HAT-PCB\Pick Place\pick_and_place_fil_pira_zero_v0.3.csv
 DItemRevisionGUID=
 
 [Parameter1]

@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------------------
-Gerber File Extension Report For: Gerber Files.GBR   11/02/2017  10:09:48 AM
+Gerber File Extension Report For: Gerber Files.GBR   12/08/2017  2:02:53 PM
 ------------------------------------------------------------------------------------------
 
 
@@ -16,5 +16,5 @@ Layer Extension     Layer Description
 .GBO                Bottom Overlay                          
 .GKO                Keep-Out Layer                          
 .GM1                Mechanical 1                            
-.GM29               Mechanical 29                           
+.GM29               ASM TOP                                 
 ------------------------------------------------------------------------------------------
