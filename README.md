@@ -1,31 +1,33 @@
-![irnas_logo](https://github.com/IRNAS/PiRA-RTC-HAT/blob/master/pira-zero-pitstop.jpg)
+![irnas_logo](https://github.com/IRNAS/PiRa-zero/blob/master/Pics/irnas_logo.png)
 # PiRA zero 
 ## Power in Responsive Applications HAT for Raspberry Pi with RTC for power saving mode
+
 PiRa zero is a compact shield for power scheduling on Rasppbery Pi and similar devices in solar and wirelessly powered applications. It implements the following key features:
+
+![pira_image](https://github.com/IRNAS/PiRA-RTC-HAT/blob/master/pira-zero-pitstop.jpg)
 
 ## Features
 
- * single cell LiPo cell charging of up to 3A (multiple 18650 cells supported)
- * solar panel charging (Voltaic systems 6W panels in parallel recommended)
- * USB charging, compatible with QI wireless chargers
- * advanced current limiting, to support wide array of chargers
- * precise charging control via i2c (BQ24296)
- * battery temperature protection with thermistor
- * battery reverse polarity protection and fuse (3A)
- * advancerd power scheduling for robust applications
+* single cell LiPo cell charging of up to 3A (multiple 18650 cells supported) + LifePo4 support
+* solar panel charging (Voltaic systems 6W panels in parallel recommended)
+* USB charging, compatible with QI wireless chargers
+* advanced current limiting, to support wide array of chargers
+* precise charging control via i2c (BQ24296)
+* battery temperature protection with thermistor
+* battery reverse polarity protection and fuse (3A)
+* high-current battery output mosfet (for 3G or satellite modems)
+* LORA RMF95 communication module
+* battery voltage precise measurement (MCP3021)
+* advanced power scheduling for robust applications:
   * power timer TPL5110 for configurable scheduled boot 1s-7200s or one-time power up on charging
-  * RTC DS3231 for configurable scheduled boot and timekeeping
-  * configurable power-up sources
-   * power-up on charging
-   * power-up from power timer
-   * power-up from RTC
-   * power-up from self-enable (cpu signal)
- * high-current battery output mosfet (for 3G or satellite modems)
- * 5V regulated output enabled from timing sources
- * LORA RMF95 communication module
- * battery voltage precise measurement (MCP3021)
+  * S3231 for configurable scheduled boot and timekeeping
+  * nfigurable power-up sources
+  * ower-up on charging
+  * ower-up from power timer
+  * ower-up from RTC
+  * ower-up from self-enable (external CPU signal)
  
-![pira_zero_con_diagram](https://github.com/IRNAS/PiRa-zero/blob/master/Pics/pira_zero_con_diagram.jpg)
+![pira_block_diagram](https://github.com/IRNAS/PiRa-zero/blob/master/Pics/pira_zero_block_diagram.jpg)
 
 ## Connector pinout
 
@@ -45,6 +47,8 @@ PiRa zero is a compact shield for power scheduling on Rasppbery Pi and similar d
  * Pin 29 - BCM 5 - GPIO BCM 5 - available at header
  * Pin 31 - BCM 6 - GPIO BCM 6 - available at header
  * Pin 33 - BCM 13 - LORA reset
+
+![pira_zero_con_diagram](https://github.com/IRNAS/PiRa-zero/blob/master/Pics/pira_zero_con_diagram.jpg)
 
 ## Power consumption
 TODO
