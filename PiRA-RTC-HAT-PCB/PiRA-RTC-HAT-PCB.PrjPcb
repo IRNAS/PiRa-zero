@@ -173,7 +173,7 @@ UniqueID=D5F29813-3F18-417D-B4F4-0C6330294E70
 Description=PiRA-RTC-HAT-PCB_V0.3
 AllowFabrication=0
 ParameterCount=0
-VariationCount=11
+VariationCount=13
 Variation1=Designator=CON2|UniqueId=\UWTAWBCJ|Kind=1|AlternatePart= 
 Variation2=Designator=P9|UniqueId=\XIFYFXBJ|Kind=1|AlternatePart= 
 Variation3=Designator=P7|UniqueId=\ULCHMBFP|Kind=1|AlternatePart= 
@@ -185,6 +185,8 @@ Variation8=Designator=P1|UniqueId=\EWDKWKBG|Kind=1|AlternatePart=
 Variation9=Designator=P3|UniqueId=\FROUFSRW|Kind=1|AlternatePart= 
 Variation10=Designator=J1|UniqueId=\CUBJSUQF|Kind=1|AlternatePart= 
 Variation11=Designator=P5|UniqueId=\IUKFPDFA|Kind=1|AlternatePart= 
+Variation12=Designator=R39|UniqueId=\PFNYOOCB|Kind=1|AlternatePart= 
+Variation13=Designator=R40|UniqueId=\JNLONMUJ|Kind=1|AlternatePart= 
 ParamVariationCount=0
 
 [GeneratedDocument1]
