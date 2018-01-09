@@ -24,8 +24,11 @@ PiRa zero is a compact shield for power scheduling on Rasppbery Pi and similar d
  * 5V regulated output enabled from timing sources
  * LORA RMF95 communication module
  * battery voltage precise measurement (MCP3021)
+ 
+![pira_zero_con_diagram](https://github.com/IRNAS/PiRa-zero/blob/master/Pics/pira_zero_con_diagram.jpg)
 
 ## Connector pinout
+
  * All ground pins connected, UART, SPI pins connected
  * Pin 1 - 3V3 - from Pi to board
  * Pin 2 - 5V - from board to Pi
